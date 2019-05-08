@@ -1,0 +1,9 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "/Users/seoseungduk/Documents/Projects/rails-blog/db/development.sqlite3",
+            "dialect": "SQLite",
+            "name": "Rails Blog"
+        }
+    ]
+}
