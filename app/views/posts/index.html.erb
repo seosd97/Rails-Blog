@@ -1,0 +1,13 @@
+<div class="root_index">
+    <h1>Posts</h1>
+    <ul class="post_list">
+        <% @posts.each do |post| %>
+            <li>
+                <%= link_to post_path(post), class: "post_list_title_label" do %>
+                    <div>Title : <%= post.title %></div>
+                    <div>Desc : <%= post.description %></div>
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
+</div>

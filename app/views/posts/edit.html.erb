@@ -1,0 +1,9 @@
+<div class="root_edit_post">
+    <h1>Edit Post</h1>
+
+    <%= form_with model: @post do |f| %>
+        <%= f.text_field :title, class: "field_title" %>
+        <%= f.text_area :description, class: "field_desc" %>
+        <%= f.submit "submit", class: "submit_edit_post" %>
+    <% end %>
+</div>

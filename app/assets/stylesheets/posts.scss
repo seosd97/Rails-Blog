@@ -1,0 +1,50 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.root_index {
+    .post_list {
+        list-style-type: decimal;
+        li {
+            border-bottom: 1px solid black;
+        }
+        li:last-child { border-bottom: none }
+
+        a:link { text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    }
+}
+
+.root_new_post {
+    .field_title {
+        display: block;
+        width: 500px;
+    }
+    
+    .field_desc {
+        display: block;
+    }
+    
+    .submit_new_post {
+        display: block;
+    }
+}
+
+.root_show_post {
+
+}
+
+.root_edit_post {
+    .field_title {
+        display: block;
+        width: 500px;
+    }
+    
+    .field_desc {
+        display: block;
+    }
+    
+    .submit_edit_post {
+        display: block;
+    }
+}

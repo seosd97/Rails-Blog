@@ -1,0 +1,12 @@
+<div class="root_show_post">
+    <h1>
+        <%= @post.title %>
+    </h1>
+
+    <div>
+        <%= @post.description %>
+    </div>
+
+    <%= link_to "Edit", edit_post_path %>
+    <%= button_to "Delete", { action: "destroy" }, method: :delete, data: { confirm: "Are You Sure?" } %>
+</div>
