@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :post_likes
   end
 
   root 'posts#index'

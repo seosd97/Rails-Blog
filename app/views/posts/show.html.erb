@@ -13,6 +13,12 @@
         <%= @post.description %>
     </div>
 
+    <div>
+        Post Likes : <%= @post.post_likes.count %>
+    </div>
+    <%= button_to "Add Like Count", post_post_likes_path(@post), form: { style: "display: inline-block;" } %>
+    <%= button_to "Del Like Count", post_post_like_path(@post, @post.post_likes.last), method: :delete, form: { style: "display: inline-block;" } %><br>
+
     <%= button_to "Edit", edit_post_path, method: :get, form: { style: "display: inline-block;" } %>
     <%= button_to "Delete", { action: "destroy" }, method: :delete, data: { confirm: "Are You Sure?" }, form: { style: "display: inline-block;" } %>
 
