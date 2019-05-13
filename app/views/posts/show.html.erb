@@ -4,6 +4,12 @@
     </h1>
 
     <div>
+        작성자 : <%= @post.user_name %><br>
+        작성일 : <%= @post.created_at.in_time_zone("Asia/Seoul").strftime("%F - %T") %><br>
+        수정일 : <%= @post.updated_at.in_time_zone("Asia/Seoul").strftime("%F - %T") %>
+    </div>
+
+    <div>
         <%= @post.description %>
     </div>
 

@@ -13,8 +13,15 @@
     <% end %>
 
     <%= form_with model: @post, local: true do |f| %>
+        <b>Writer : </b>
+        <%= f.text_field :user_name, class: "filed_user_name" %>
+
+        <b>Title : </b>
         <%= f.text_field :title, class: "field_title" %>
+
+        <b>desc : </b>
         <%= f.text_area :description, class: "field_desc" %>
+        
         <%= f.submit "submit", class: "submit_new_post" %>
     <% end %>
 </div>
