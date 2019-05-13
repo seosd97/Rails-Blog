@@ -13,7 +13,7 @@
     <% end %>
 
     <%= form_with model: @post, local: true do |f| %>
-        <%= f.text_field:title, class: "field_title" %>
+        <%= f.text_field :title, class: "field_title" %>
         <%= f.text_area :description, class: "field_desc" %>
         <%= f.submit "submit", class: "submit_new_post" %>
     <% end %>

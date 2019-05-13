@@ -7,6 +7,20 @@
         <%= @post.description %>
     </div>
 
-    <%= link_to "Edit", edit_post_path %>
-    <%= button_to "Delete", { action: "destroy" }, method: :delete, data: { confirm: "Are You Sure?" } %>
+    <%= button_to "Edit", edit_post_path, method: :get, form: { style: "display: inline-block;" } %>
+    <%= button_to "Delete", { action: "destroy" }, method: :delete, data: { confirm: "Are You Sure?" }, form: { style: "display: inline-block;" } %>
+
+    <h2>Comments</h2>
+    <% @post.comments.each do |comment| %>
+        <div class="comment">
+            <%= comment.description %>
+            <%= button_to "edit", {action: "edit"}, method: :get, form: { style: "display: inline-block;" } %>
+            <%= button_to "x", [@post, comment], method: :delete, data: { confirm: "Are You Sure?" }, form: { style: "display: inline-block;" } %>
+        </div>
+    <% end %>
+
+    <%= form_with model: [@post, @post.comments.build], local: true do |f| %>
+        <%= f.text_area :description %>
+        <%= f.submit "submit comment" %>
+    <% end %>
 </div>
