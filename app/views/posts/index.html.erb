@@ -3,13 +3,12 @@
     <ul class="post_list">
         <% @posts.each do |post| %>
             <li>
-                <%= link_to post_path(post), class: "post_list_title_label" do %>
-                    <div>Title : <%= post.title %></div>
-                    <div>Desc : <%= post.description %></div>
+                <%= link_to post_path(post) do %>
+                    <%= post.title %>
                 <% end %>
             </li>
         <% end %>
     </ul>
     
-    <%= button_to "New Post", { action: :new }, method: :get %>
+    <%= button_to "New Post", { action: :new }, method: :get, class: "new_post_button" %>
 </div>

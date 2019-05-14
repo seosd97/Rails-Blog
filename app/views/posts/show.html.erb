@@ -1,38 +1,37 @@
 <div class="root_show_post">
-    <h1>
-        <%= @post.title %>
-    </h1>
+    <div class="post_container">
+        <h1>
+            <%= @post.title %>
+        </h1>
 
-    <div>
-        작성자 : <%= @post.user_name %><br>
-        작성일 : <%= @post.created_at.in_time_zone("Asia/Seoul").strftime("%F - %T") %><br>
-        수정일 : <%= @post.updated_at.in_time_zone("Asia/Seoul").strftime("%F - %T") %>
-    </div>
-
-    <div>
-        <%= @post.description %>
-    </div>
-
-    <div>
-        Post Likes : <%= @post.post_likes.count %>
-    </div>
-    <%= button_to "Add Like Count", post_post_likes_path(@post), form: { style: "display: inline-block;" } %>
-    <%= button_to "Del Like Count", post_post_like_path(@post, @post.post_likes.last), method: :delete, form: { style: "display: inline-block;" } %><br>
-
-    <%= button_to "Edit", edit_post_path, method: :get, form: { style: "display: inline-block;" } %>
-    <%= button_to "Delete", { action: "destroy" }, method: :delete, data: { confirm: "Are You Sure?" }, form: { style: "display: inline-block;" } %>
-
-    <h2>Comments</h2>
-    <% @post.comments.each do |comment| %>
-        <div class="comment">
-            <%= comment.description %>
-            <%= button_to "edit", {action: "edit"}, method: :get, form: { style: "display: inline-block;" } %>
-            <%= button_to "x", [@post, comment], method: :delete, data: { confirm: "Are You Sure?" }, form: { style: "display: inline-block;" } %>
+        <div class="post_info">
+            <%= @post.user_name %><br>
+            <%= @post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %>
         </div>
-    <% end %>
 
-    <%= form_with model: [@post, @post.comments.build], local: true do |f| %>
-        <%= f.text_area :description %>
-        <%= f.submit "submit comment" %>
-    <% end %>
+        <div class="post_content">
+            <%= @post.description %>
+        </div>
+        
+        <div class="post_edit_menu">
+            <%= button_to "Edit", edit_post_path, method: :get %>
+            <%= button_to "Delete", { action: "destroy" }, method: :delete, data: { confirm: "Are You Sure?" } %>
+        </div>
+    </div>
+
+    <div class="post_footer">
+        <h2>Comments</h2>
+
+        <% @post.comments.each do |comment| %>
+            <div class="comment">
+                <%= comment.description %>
+                <%= button_to "delete comment", [@post, comment], method: :delete, data: { confirm: "Are You Sure?" }%>
+            </div>
+        <% end %>
+
+        <%= form_with model: [@post, @post.comments.build], local: true, class: "new_comment_form" do |f| %>
+            <%= f.text_area :description, class: "comment_desc_area" %>
+            <%= f.submit "submit comment", class: "comment_submit" %>
+        <% end %>
+    </div>
 </div>
