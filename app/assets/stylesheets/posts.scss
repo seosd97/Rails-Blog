@@ -146,16 +146,51 @@
 }
 
 .root_edit_post {
-    .field_title {
+    width: 100%;
+
+    .edit_post_container {
+        max-width: 740px;
+        margin: 0 auto;
+    }
+
+    .edit_post_edit_content {
+        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, .15);
+    }
+
+    .edit_post_edit_field {
         display: block;
-        width: 500px;
+        width: 100%;
+        border: none;
+        padding: 0 10px;
+        background-color: #ffffff;
+        word-break: break-word;
+        box-sizing: border-box;
+    }
+
+    .field_title {
+        min-height: 50px;
+        border-bottom: 1px solid #dddddd;
+        font-size: 23px;
+
+        &:focus {
+            outline: none;
+        }
     }
     
     .field_desc {
-        display: block;
+        min-height: 300px;
+        height: 550px;
+        padding-top: 10px;
+        font-size: 15px;
+        resize: none;
+
+        &:focus {
+            outline: none;
+        }
     }
     
     .submit_edit_post {
         display: block;
+        margin: 20px 0;
     }
 }
