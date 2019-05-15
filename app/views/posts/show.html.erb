@@ -10,7 +10,7 @@
         </div>
 
         <div class="post_content">
-            <%= @post.description %>
+            <%= md_to_html(@post.description) %>
         </div>
         
         <div class="post_edit_menu">
@@ -20,7 +20,13 @@
     </div>
 
     <div class="post_footer">
-        <h2>Comments</h2>
+        <h2>
+            <% if @post.comments.any? %>
+                <%= pluralize(@post.comments.count, "Comment") %>
+            <% else %>
+                0 Comment
+            <% end %>
+        </h2>
 
         <% @post.comments.each do |comment| %>
             <div class="comment">

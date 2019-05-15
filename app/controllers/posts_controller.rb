@@ -16,7 +16,8 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.new(post_param)
+        @post = Post.new(permit_params(:post, [:title, :description]))
+        @post.user_name = "admin"
 
         if @post.save
             redirect_to @post
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
     end
 
     def update
-        redirect_to @post if @post.update(post_param)
+        redirect_to @post if @post.update(permit_params(:post, [:title, :description]))
     end
 
     def destroy
@@ -38,7 +39,7 @@ class PostsController < ApplicationController
     end
 
     private
-        def post_param
-            params.require(:post).permit(:user_name, :title, :description)
-        end
+    def permit_params(model_name, *parameters)
+        params.require(model_name).permit(parameters)
+    end
 end
