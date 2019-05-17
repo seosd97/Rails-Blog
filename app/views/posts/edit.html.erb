@@ -1,14 +1,7 @@
-<div class="root_edit_post">
-    <div class="edit_post_container">
+<div class="root_post_edit">
+    <div class="post_edit_container">
         <h1>Edit Post</h1>
 
-        <%= form_with model: @post do |f| %>
-            <div class="edit_post_edit_content">
-                <%= f.text_field :title, class: "edit_post_edit_field field_title", placeholder: "Enter Title" %>
-                <%= f.text_area :description, class: "edit_post_edit_field field_desc", placeholder: "Enter Description in markdown format" %>
-            </div>
-            
-            <%= f.submit "submit", class: "submit_edit_post" %>
-        <% end %>
+        <%= render 'post_edit_content' %>
     </div>
 </div>
