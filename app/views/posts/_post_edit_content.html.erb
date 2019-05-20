@@ -1,19 +1,21 @@
-<% if @post.errors.any? %>
-    <div class="errors_desc">
-        <h2>You've got <%= pluralize(@post.errors.count, "error") %></h2>
-        <ul>
-            <% @post.errors.full_messages.each do |err| %>
-                <li><%= err %></li>
-            <% end %>
-        </ul>
-    </div>
-<% end %>
+<div class="post_edit_container">
+    <% if @post.errors.any? %>
+        <div class="errors_desc">
+            <h2>You've got <%= pluralize(@post.errors.size, "error") %></h2>
+            <ul>
+                <% @post.errors.full_messages.each do |err| %>
+                    <li><%= err %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
-<%= form_with model: @post do |f| %>
-    <div class="post_edit_content">
-        <%= f.text_field :title, class: "post_edit_field post_edit_field_title", placeholder: "Enter Title" %>
-        <%= f.text_area :description, class: "post_edit_field post_edit_field_desc", placeholder: "Enter Description in markdown format" %>
-    </div>
-    
-    <%= f.submit "submit", class: "post_edit_submit" %>
-<% end %>
+    <%= form_with model: @post do |f| %>
+        <div class="post_edit_content">
+            <%= f.text_field :title, class: "post_edit_field post_edit_field_title", placeholder: "Enter Title" %>
+            <%= f.text_area :description, class: "post_edit_field post_edit_field_desc", placeholder: "Enter Description in markdown format" %>
+        </div>
+        
+        <%= f.submit "submit", class: "post_edit_submit" %>
+    <% end %>
+</div>

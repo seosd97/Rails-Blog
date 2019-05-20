@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     end
 
     def show
+        @post.update_column('visitor_count', @post.visitor_count + 1)
     end
 
     def edit
