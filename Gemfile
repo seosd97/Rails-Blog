@@ -63,3 +63,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # User Add Extension
 gem 'redcarpet'
+gem 'mysql2', '~> 0.5.2'
