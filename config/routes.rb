@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'admin', to: 'admin#index'
-
   namespace :admin do
+    root 'posts#index'
+    get 'login', to: 'session#new'
+    post 'login', to: 'session#create'
+    delete 'logout', to: 'session#destroy'
+
     resources :posts
   end
 

@@ -14,6 +14,11 @@
         <div class="layout-header">
           <% if is_admin_page? %>
             <a href="/admin" class="home-link">SSD's Blog [Admin]</a>
+            
+            <% if has_login? %>
+              <%= button_to "logout", admin_logout_path, method: :delete %>
+            <% end %>
+
           <% else %>
             <a href="/" class="home-link">SSD's Blog</a>
           <% end %>

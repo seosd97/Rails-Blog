@@ -12,14 +12,9 @@
             <%= @post.visitor_count %>
         </div>
 
-          <% if is_admin_page? %>
-            <h1>zzzzzzzzzzzz</h1>
-          <% else %>
         <div class="post_content">
             <%= md_to_html(@post.description) %>
         </div>
-          <% end %>
-          
         
         <%# <div class="post_edit_menu"> %>
             <%# <%= button_to "Edit", edit_post_path, method: :get %> %>

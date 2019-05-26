@@ -1,0 +1,7 @@
+<h1>Sign In</h1>
+
+<%= form_with url: admin_login_path do |f| %>
+    name : <%= f.text_field :name %><br>
+    password : <%= f.password_field :password %><br>
+    <%= f.submit "login" %>
+<% end %>
