@@ -1,14 +1,3 @@
 <div class="root_index">
-    <h1>Posts</h1>
-    <ul class="post_list">
-        <% @posts.each do |post| %>
-            <li>
-                <%= link_to post_path(post) do %>
-                    <%= post.title %>
-                <% end %>
-            </li>
-        <% end %>
-    </ul>
-    
-    <%# <%= button_to "New Post", { action: :new }, method: :get, class: "new_post_button" %>
+    <%= render 'partials/post_list' %>
 </div>

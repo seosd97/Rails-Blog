@@ -1,0 +1,46 @@
+<div class="post_container">
+    <h1>
+        <%= @post.title %>
+    </h1>
+
+    <div class="post_info">
+        <%= @post.owner %><br>
+        <%= @post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %><br>
+
+        <%= image_tag 'visitor_icon.png', size: '15x15', align: 'center' %>
+        <%= @post.visitor_count %>
+    </div>
+
+    <div class="post_content">
+        <%= md_to_html(@post.description) %>
+    </div>
+    
+    <% if is_admin_page? %>
+        <div class="post_edit_menu">
+            <%= button_to "Edit", edit_admin_post_path, method: :get %>
+            <%= button_to "Delete", { action: "destroy" }, method: :delete, data: { confirm: "Are You Sure?" } %>
+        </div>
+    <% end %>
+</div>
+
+<div class="post_footer">
+    <h2>
+        <% if @post.comments.any? %>
+            <%= pluralize(@post.comments.size, "Comment") %>
+        <% else %>
+            0 Comment
+        <% end %>
+    </h2>
+
+    <% @post.comments.each do |comment| %>
+        <div class="comment">
+            <%= comment.description %>
+            <%= button_to "delete comment", [@post, comment], method: :delete, data: { confirm: "Are You Sure?" }%>
+        </div>
+    <% end %>
+
+    <%= form_with model: [@post, @post.comments.build], local: true, class: "new_comment_form" do |f| %>
+        <%= f.text_area :description, class: "comment_desc_area" %>
+        <%= f.submit "submit comment", class: "comment_submit" %>
+    <% end %>
+</div>

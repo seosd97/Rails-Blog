@@ -6,7 +6,6 @@ class Admin::PostsController < AdminController
     end
 
     def show
-        @post.update_column('visitor_count', @post.visitor_count + 1)
     end
 
     def new
@@ -15,7 +14,7 @@ class Admin::PostsController < AdminController
 
     def create
         @post = Post.new(permit_params(:post, [:title, :description]))
-        @post.user_name = 'admin'
+        @post.owner = 'admin'
 
         if @post.save
             redirect_to @post

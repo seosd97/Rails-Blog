@@ -13,7 +13,8 @@ class Admin::SessionController < AdminController
             session[:user_id] = user.id
             redirect_to admin_posts_path
         else
-            # TODO : 로그인 실패 시 에러메세지를 같이 보여줘야함.
+            # TODO : 로그인 실패 시 에러메세지를 같이 보여줘야 함
+            flash.now[:notice] = "invalid user name or password"
             render :new
         end
     end
