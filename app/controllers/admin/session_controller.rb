@@ -5,11 +5,8 @@ class Admin::SessionController < AdminController
     end
 
     def create
-        # TODO
-        # 현재 유저의 이름으로 단순히 db에서 유저를 찾아서 로그인을 해주고 있음.
-        # 비밀번호도 같이 확인하여 정상적인 인증 절차를 거쳐 로그인을 해줘야함.
         user = User.find_by(name: params[:name])
-        if user.present?
+        if user.present? && user.authenticate(params[:password])
             session[:user_id] = user.id
             redirect_to admin_posts_path
         else
