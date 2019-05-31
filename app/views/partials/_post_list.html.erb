@@ -1,12 +1,15 @@
-<h1>Posts</h1>
-<ul class="post_list">
+<ul class="post-container">
     <% @posts.each do |post| %>
         <li>
-            <%= link_to post.title, get_post_path(post)%>
+            <%= link_to get_post_path(post) do %>
+                <h2 class="post-title"><%= post.title %></h2>
+            <% end %>
+            <div class="post-info">
+                <%= post.owner %></br>
+                <%= post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %></br>
+                <%= image_tag 'visitor_icon.png', size: '13x13', align: 'center' %>
+                <%= post.visitor_count %>
+            </div>
         </li>
     <% end %>
 </ul>
-
-<% if is_admin_page? %>
-    <%= button_to "New Post", { action: :new }, method: :get, class: "new_post_button" %>
-<% end %>

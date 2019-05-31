@@ -1,17 +1,27 @@
-.post_list {
-    list-style-type: decimal;
+.post-container {
+    max-width: 600px;
+    margin: 10px auto;
+    list-style-type: none;
+    padding: 0;
+
     li {
         border-bottom: 1px solid #eeeeee;
-        padding: 10px 0;
+        padding: 20px 0;
     }
-    li:last-child { border-bottom: none }
+    li:last-child { border-bottom: none; }
 
     a {
         text-decoration: none;
         color: black;
-        font-size: 17px;
-        font-weight: bold;
 
         &:hover { text-decoration: underline; }
+
+        .post-title {
+            font-weight: bold;
+        }
+    }
+
+    .post-info {
+        font-size: 13px;
     }
 }
