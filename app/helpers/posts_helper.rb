@@ -1,7 +1,7 @@
 module PostsHelper
     def md_to_html(text)
-        renderer = Redcarpet::Render::HTML::new(option = {})
-        markdown = Redcarpet::Markdown::new(renderer, extension = {})
+        renderer = Redcarpet::Render::HTML::new({ hard_wrap: true })
+        markdown = Redcarpet::Markdown::new(renderer, {})
         markdown.render(text).html_safe;
     end
 

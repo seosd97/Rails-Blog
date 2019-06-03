@@ -17,7 +17,7 @@ class Admin::PostsController < AdminController
         @post.owner = 'admin'
 
         if @post.save
-            redirect_to @post
+            redirect_to admin_post_path(@post)
         else
             render :new
         end
@@ -31,7 +31,7 @@ class Admin::PostsController < AdminController
     end
 
     def destroy
-        redirect_to posts_path if @post.destroy
+        redirect_to admin_posts_path if @post.destroy
     end
 
     def load_post
