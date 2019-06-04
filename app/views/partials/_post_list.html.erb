@@ -7,7 +7,7 @@
             <div class="post-info">
                 <%= post.owner %></br>
                 <%= post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %></br>
-                <%= image_tag 'visitor_icon.png', size: '13x13', align: 'center' %>
+                <%= image_tag 'icons/visitor.png', size: '13x13', align: 'center' %>
                 <%= post.visitor_count %>
             </div>
         </li>
