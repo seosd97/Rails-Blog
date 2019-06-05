@@ -8,6 +8,7 @@ default: &default
   adapter: mysql2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  encoding: utf8mb4
 
 development:
   <<: *default
@@ -30,8 +31,8 @@ test:
 
 production:
   <<: *default
-  database: RailsBlog_Prod
-  username: ssd
-  password: ssd08035
+  database: <%= ENV["MYSQL_DATABASE"] %>
+  username: <%= ENV["MYSQL_USER_NAME"] %>
+  password: <%= ENV["MYSQL_USER_PASSWORD"] %>
   host: aakmycb42g3tch.cuufrgacecrh.ap-northeast-2.rds.amazonaws.com
-  port: 3306
+  port: <%= ENV.fetch("MYSQL_PORT") { 3306 } %>

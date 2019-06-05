@@ -22,25 +22,3 @@
         </div>
     <% end %>
 </div>
-
-<div class="post_footer">
-    <h2>
-        <% if @post.comments.any? %>
-            <%= pluralize(@post.comments.size, "Comment") %>
-        <% else %>
-            0 Comment
-        <% end %>
-    </h2>
-
-    <% @post.comments.each do |comment| %>
-        <div class="comment">
-            <%= comment.description %>
-            <%= button_to "delete comment", [@post, comment], method: :delete, data: { confirm: "Are You Sure?" }%>
-        </div>
-    <% end %>
-
-    <%= form_with model: [@post, @post.comments.build], local: true, class: "new_comment_form" do |f| %>
-        <%= f.text_area :description, class: "comment_desc_area" %>
-        <%= f.submit "submit comment", class: "comment_submit" %>
-    <% end %>
-</div>
