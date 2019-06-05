@@ -1,9 +1,9 @@
-<div class="post_container">
-    <h1>
+<div class="post-container">
+    <h1 class="post-title">
         <%= @post.title %>
     </h1>
 
-    <div class="post_info">
+    <div class="post-info">
         <%= @post.owner %><br>
         <%= @post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %><br>
 
@@ -11,12 +11,12 @@
         <%= @post.visitor_count %>
     </div>
 
-    <div class="post_content">
+    <div class="post-content">
         <%= md_to_html(@post.description) %>
     </div>
     
     <% if is_admin_page? %>
-        <div class="post_edit_menu">
+        <div class="post-edit-menu">
             <%= button_to "Edit", edit_admin_post_path, method: :get %>
             <%= button_to "Delete", { action: "destroy" }, method: :delete, data: { confirm: "Are You Sure?" } %>
         </div>

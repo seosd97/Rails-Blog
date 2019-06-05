@@ -1,15 +1,22 @@
-.post_container {
+.post-container {
     max-width: 740px;
     margin: 0 auto;
     padding: 0 20px;
 
-    .post_info {
+    .post-title {
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    .post-info {
         font-size: 12px;
         margin: 20px 0;
     }
 
-    .post_content {
+    .post-content {
+        font-size: 17px;
         margin: 10px 0;
+        line-height: 1.6;
 
         pre {
             background-color: #464646;
@@ -21,7 +28,7 @@
         }
     }
     
-    .post_edit_menu {
+    .post-edit-menu {
         display: flex;
         justify-content: flex-end;
         padding: 10px 0;

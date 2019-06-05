@@ -18,6 +18,11 @@ body {
     height: 100%;
     margin: 0;
     background-color: #fcfcfc;
+    font-family: 'Nanum Gothic';
+}
+
+code {
+    font-family: 'Consolas', monospace;
 }
 
 .layout-header {
