@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsBlog</title>
+    <title>SSD's Blog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <div class="layout-header">
+    <header class="layout-header">
       <% if is_admin_page? %>
         <a href="/admin" class="home-link">SSD's Blog [Admin]</a>
         
@@ -26,7 +26,7 @@
       <% else %>
         <a href="/" class="home-link">SSD's Blog</a>
       <% end %>
-    </div>
+    </header>
 
     <%= yield %>
   </body>

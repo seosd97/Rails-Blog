@@ -4,7 +4,6 @@
     </h1>
 
     <div class="post-info">
-        <%= @post.owner %><br>
         <%= @post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %><br>
 
         <%= image_tag 'icons/visitor.png', size: '15x15', align: 'center' %>
