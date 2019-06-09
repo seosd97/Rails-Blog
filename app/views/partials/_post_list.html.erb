@@ -1,18 +1,22 @@
 <ul class="post-list-container">
     <% @posts.each do |post| %>
-        <li>
+        <li class="post-list-element">
             <%= link_to get_post_path(post) do %>
                 <h2 class="post-list-title"><%= post.title %></h2>
                 <p class="post-list-desc">
                     <%= parse_md_strip_down(post.description) %>
                 </p>
             <% end %>
-            <div class="post-list-info">
-                <%= post.owner %></br>
-                <%= post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %></br>
-                <%= image_tag 'icons/visitor.png', size: '13x13', align: 'center' %>
-                <%= post.visitor_count %>
-            </div>
+
+            <ul class="post-list-info">
+                <li>
+                    <%= post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %>
+                </li>
+                <li>
+                    <%= image_tag 'icons/visitor.png', size: '13x13', align: 'center' %>
+                    <%= post.visitor_count %>
+                </li>
+            </ul>
         </li>
     <% end %>
 </ul>

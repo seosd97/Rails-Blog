@@ -4,11 +4,12 @@
     list-style-type: none;
     padding: 0;
 
-    li {
+    .post-list-element {
         border-bottom: 1px solid #eeeeee;
         padding: 20px 0;
+
+        &:last-child { border-bottom: none; }
     }
-    li:last-child { border-bottom: none; }
 
     a {
         display: block;
@@ -36,6 +37,24 @@
     }
 
     .post-list-info {
+        display: block;
+        list-style: none;
+        padding: 0;
         font-size: 12px;
+        
+        li {
+            display: inline-block;
+
+            &::before {
+                content: "|";
+                color: #afafaf;
+                margin: 0 5px;
+            }
+
+            &:first-child::before {
+                content: "";
+                margin: 0;
+            }
+        }
     }
 }
