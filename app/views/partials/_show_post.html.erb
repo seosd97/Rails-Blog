@@ -12,7 +12,7 @@
     </div>
 
     <div class="post-content">
-        <%= md_to_html(@post.description) %>
+        <%= parse_md_to_html(@post.description) %>
     </div>
     
     <% if is_admin_page? %>
