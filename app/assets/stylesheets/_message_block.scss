@@ -1,0 +1,30 @@
+.block-container {
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: auto;
+    padding: 10px 30px;
+    margin: 5px 5px;
+    border: 1.5px solid rgba($color: #ff4747, $alpha: 0.7);
+    border-radius: 10px 10px 10px 10px / 10px 10px 10px 10px;
+    background-color: rgba($color: #ff8181, $alpha: 0.7);
+    animation: FadeIn .75s ease-out;
+
+    p {
+        margin: 0;
+        font-size: 15px;
+        word-break: break-word;
+        line-height: 30px;
+    }
+}
+
+@keyframes FadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

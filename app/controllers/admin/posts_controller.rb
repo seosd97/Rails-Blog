@@ -19,7 +19,16 @@ class Admin::PostsController < AdminController
         if @post.save
             redirect_to admin_post_path(@post)
         else
-            render :new
+            flash.now[:error] = ""
+            @post.errors.full_messages.each do |msg|
+                flash.now[:error] << msg
+                flash.now[:error] << "</br>"
+            end
+
+            respond_to do |f|
+                f.html { render :new }
+                f.js { render action: "js_templates/message_block" }
+            end
         end
     end
 

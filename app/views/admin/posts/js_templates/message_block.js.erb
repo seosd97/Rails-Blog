@@ -1,0 +1,6 @@
+if (<%= flash.now[:error].present? %>) {
+    const msgBlock = document.querySelector('.message-block-area');
+    if (msgBlock !== null) {
+        msgBlock.innerHTML = "<%= escape_javascript(render "partials/message_block") %>";
+    }
+}
