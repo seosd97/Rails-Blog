@@ -1,7 +1,11 @@
 <div class="block-container">
-    <p>
-        <% flash.each do |key, value| %>
-            <%= value.html_safe %>
-        <% end %>
-    </p>
+    <% flash.now[:error].split(',').each_with_index do |msg, index| %>
+        <div class="block-content">
+            <p>
+                <%= image_tag "icons/error.png", size: "18x18", align: "center", style: "filter: invert(1); margin: 0 5px;" %>
+                <% msg << '</br>' %>
+                <%= msg.html_safe %>
+            </p>
+        </div>
+    <% end %>
 </div>
