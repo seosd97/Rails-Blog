@@ -31,7 +31,7 @@ class Admin::PostsController < AdminController
     end
     
     def update
-        redirect_to @post if @post.update(permit_params(:post, [:title, :description]))
+        redirect_to admin_post_path(@post) if @post.update(permit_params(:post, [:title, :description]))
     end
 
     def destroy
