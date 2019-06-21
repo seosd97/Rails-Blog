@@ -1,0 +1,11 @@
+<span class="admin-content-wrapper">
+    <% if current_page?(new_admin_post_path) ||
+        (@post.present? && @post.id.present? && current_page?(edit_admin_post_path(@post))) %>
+        <!--글 작성 레이아웃 메뉴-->
+        <%= link_to "Publish", "javascript:void(0)", class: 'publish-button' %>
+    <% else %>
+        <!--기본 레이아웃 메뉴-->
+        <%= link_to "New Post", new_admin_post_path, method: :get %>
+    <% end %>
+    <%= link_to "Logout", admin_logout_path, method: :delete, class: "logout-button" %>
+</span>

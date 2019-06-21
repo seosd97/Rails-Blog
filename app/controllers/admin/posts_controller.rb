@@ -1,6 +1,4 @@
 class Admin::PostsController < AdminController
-    before_action :load_post, only: [:show, :edit, :update, :destroy]
-
     def index
         @posts = Post.all
     end
@@ -19,11 +17,7 @@ class Admin::PostsController < AdminController
         if @post.save
             redirect_to admin_post_path(@post)
         else
-            add_block_message(@post.errors.full_messages)
-            
-            respond_to do |f|
-                f.js { render action: "js_templates/message_block" }
-            end
+            show_post_edit_error_message 
         end
     end
 
@@ -31,20 +25,27 @@ class Admin::PostsController < AdminController
     end
     
     def update
-        redirect_to admin_post_path(@post) if @post.update(permit_params(:post, [:title, :description]))
+        if @post.update(permit_params(:post, [:title, :description]))
+            redirect_to admin_post_path(@post)
+        else
+            show_post_edit_error_message
+        end
     end
 
     def destroy
         redirect_to admin_posts_path if @post.destroy
     end
 
-    def load_post
-        @post = Post.find(params[:id])
-    end
-    
     private
+    def permit_params(key, *values)
+        params.require(key).permit(values);
+    end
 
-    def permit_params(model_name, *parameters)
-        params.require(model_name).permit(parameters)
+    def show_post_edit_error_message
+        add_block_message(:error, @post.errors.full_messages)
+            
+        respond_to do |f|
+            f.js { render action: "js_templates/message_block" }
+        end
     end
 end

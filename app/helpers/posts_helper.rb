@@ -4,7 +4,8 @@ module PostsHelper
 
     def parse_md_to_html(text)
         options = {
-            hard_wrap: true
+            hard_wrap: true,
+            escape_html: true
         }
 
         extensions = {

@@ -1,5 +1,5 @@
 class Admin::SessionController < AdminController
-    skip_before_action :check_login?
+    skip_before_action :require_login?, :get_current_post
     
     def new
     end
@@ -13,9 +13,11 @@ class Admin::SessionController < AdminController
             session[:user_id] = user.id
             redirect_to admin_posts_path
         else
-            respond_to do |format|
-                format.html { render :new }
-                format.js { flash["login_error"] = get_login_error_msg(user_name, user_password) }
+            add_block_message(:login_error, get_login_error_msg(user_name, user_password))
+
+            respond_to do |f|
+                f.html { render :new }
+                f.js
             end
         end
     end

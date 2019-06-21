@@ -1,10 +1,14 @@
-<div class="post_edit_container">
-    <%= form_with model: [:admin, @post] do |f| %>
-        <div class="post_edit_content">
-            <%= f.text_field :title, class: "post_edit_field post_edit_field_title", placeholder: "Enter Title" %>
-            <%= f.text_area :description, class: "post_edit_field post_edit_field_desc", placeholder: "Enter Description in markdown format" %>
+<% content_for :head do %>
+    <%= javascript_include_tag 'post_edit', 'data-turbolinks-track': 'reload'%>
+<% end %>
+
+<div class="post-edit-container">
+    <%= form_with model: [:admin, @post], class: "post-edit-form" do |f| %>
+        <div class="post-edit-content">
+            <%= f.text_field :title, class: "post-edit-field post-edit-field-title", placeholder: "Enter Title" %>
+            <%= f.hidden_field :description, class: "post-edit-desc-hidden" %>
+            <div class="post-edit-field post-edit-field-desc" contenteditable=true placeholder="Enter Description in markdown format"></div>
+            <!--<%= f.text_area :description, class: "post-edit-field post-edit-field-desc", placeholder: "Enter Description in markdown format" %>-->
         </div>
-        
-        <%= f.submit "submit", class: "post_edit_submit" %>
     <% end %>
 </div>

@@ -12,8 +12,12 @@ module ApplicationHelper
     end
 
     # CONTOLLER USE ONLY
-    def add_block_message(*text)
+    def add_block_message(key, *text)
         full_message = text.compact.join(',')
-        flash.now[:error] = full_message
+        flash.now[key] = full_message
+    end
+    
+    def is_post_edit_page?
+        current_page?(controller: 'admin/posts', action: 'new')
     end
 end

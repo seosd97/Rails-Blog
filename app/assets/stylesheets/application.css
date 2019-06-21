@@ -45,20 +45,3 @@ code {
     color: #212529;
     text-decoration: none;
 }
-
-.admin-content-wrapper {
-    position: absolute;
-    right: 50px;
-}
-
-.admin-content {
-    padding: 0 10px;
-    font-size: 15px;
-    color: #212529;
-    text-decoration: none;
-    border-right: 1px solid #797979;
-}
-
-.logout-button {
-    border: none;
-}
