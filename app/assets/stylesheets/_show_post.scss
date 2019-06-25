@@ -35,12 +35,16 @@
     }
     
     .post-edit-menu {
-        display: flex;
-        justify-content: flex-end;
         padding: 10px 0;
 
-        .button_to {
+        a {
             display: inline-block;
+            margin-right: 5px;
+            opacity: 0.6;
+
+            &:hover {
+                opacity: 0.9;
+            }
         }
     }
 }
