@@ -1,14 +1,30 @@
 <% content_for :head do %>
     <%= javascript_include_tag 'post_edit', 'data-turbolinks-track': 'reload'%>
+    <%= javascript_include_tag 'post_edit_navigation', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
-<div class="post-edit-container">
-    <%= form_with model: [:admin, @post], class: "post-edit-form" do |f| %>
-        <div class="post-edit-content">
+<div class="post-edit-content">
+    <div class="post-edit-container">
+        <%= form_with model: [:admin, @post] do |f| %>
             <%= f.text_field :title, class: "post-edit-field post-edit-field-title", placeholder: "Enter Title" %>
             <%= f.hidden_field :description, class: "post-edit-desc-hidden" %>
             <div class="post-edit-field post-edit-field-desc" contenteditable=true placeholder="Enter Description in markdown format"></div>
-            <!--<%= f.text_area :description, class: "post-edit-field post-edit-field-desc", placeholder: "Enter Description in markdown format" %>-->
-        </div>
-    <% end %>
+        <% end %>
+    </div>
+
+    <div class="post-edit-nav">
+        <%= image_tag 'icons/picture.png', size: '25x25', align: 'center', onClick: "javascript:hidePreviewBar()", class: 'upload-image' %>
+        <%= file_field_tag '', class: 'hidden-file-field', style: "display: none;" %>
+    </div>
+</div>
+
+<div class="image-preview-bar", disabled="true">
+    <div class="image-preview-bar-header">
+        <span class="preview-title">이미지</span>
+        <%= image_tag 'icons/close.png', size: '18x18', align: 'center', onClick: "javascript:hidePreviewBar()", class: 'preview-close' %>
+    </div>
+
+    <div class="image-preview-bar-container">
+
+    </div>
 </div>

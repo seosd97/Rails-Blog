@@ -8,6 +8,7 @@ class Admin::PostsController < AdminController
 
     def new
         @post = Post.new
+        @uploader = PostImagesUploader.new
     end
 
     def create
@@ -34,6 +35,12 @@ class Admin::PostsController < AdminController
 
     def destroy
         redirect_to admin_posts_path if @post.destroy
+    end
+
+    def store_image
+        @uploader = PostImagesUploader.new
+        logger.debub @uploader.key
+        #@uploader.store!(params[:image])
     end
 
     private

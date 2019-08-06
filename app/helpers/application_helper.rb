@@ -16,8 +16,4 @@ module ApplicationHelper
         full_message = text.compact.join(',')
         flash.now[key] = full_message
     end
-    
-    def is_post_edit_page?
-        current_page?(controller: 'admin/posts', action: 'new')
-    end
 end

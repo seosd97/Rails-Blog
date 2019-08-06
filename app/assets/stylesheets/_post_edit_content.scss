@@ -1,13 +1,34 @@
-.post-edit-container {
+.post-edit-content {
     box-sizing: border-box;
-    max-width: 740px;
-    min-height: 100%;
-    padding: 50px 50px 100px 50px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    border: 1px solid #dfdfdf;
-    border-top: none;
-    .post-edit-content {
+    height: 100%;
+
+    .post-edit-nav {
+        box-sizing: border-box;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        padding: 10px;
+        width: 80px;
+        height: 200px;
+
+        background-color: #616161;
+
+        .upload-image {
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+    }
+
+    .post-edit-container {
+        box-sizing: border-box;
+        max-width: 740px;
+        min-height: 100%;
+        padding: 50px 50px 100px 50px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border: 1px solid #dfdfdf;
+    
         .post-edit-field {
             display: block;
             width: 100%;
@@ -40,5 +61,37 @@
                 color: #616161;
             }
         }
+    }
+}
+
+.image-preview-bar {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 300px;
+    min-height: 100%;
+    background-color: white;
+    border-left: 1px solid #eeeeee;
+
+    .image-preview-bar-header {
+        padding-left: 10px;
+        background-color: #eeeeee;
+        border: 1px solid #e7e7e7;
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        font-size: 18px;
+        font-weight: bold;
+
+        .preview-close{
+            display: inline-block;
+            cursor: pointer;
+        }
+    }
+
+    .image-preview-bar-container {
+        padding-left: 10px;
+        // flex로 작업
     }
 }

@@ -2,9 +2,6 @@ window.addEventListener("load", () => {
     const descEditField = document.querySelector('.post-edit-field-desc');
     const descHiddenField = document.querySelector('.post-edit-desc-hidden');
 
-    if (descEditField === null || descHiddenField === null)
-        return;
-
     if (descHiddenField.value !== '') {
         descEditField.innerText = descHiddenField.value;
     }
@@ -16,6 +13,29 @@ window.addEventListener("load", () => {
             const form = document.querySelector('.post-edit-form');
             Rails.fire(form, 'submit');
         };
+    }
+
+    // NOTE : 이미지 프리뷰 창 이벤트
+
+    // TODO : 추후 연출을 위해 애니메이션으로 처리를 해줘야 함.
+    const imagePreviewBar = document.querySelector('.image-preview-bar');
+    function showPreviewBar() {
+        imagePreviewBar.style.display = "block";
+    }
+
+    function hidePreviewBar() {
+        imagePreviewBar.style.display = "none"
+    }
+
+    const previewCloseButton = document.querySelector('.preview-close');
+    previewCloseButton.onclick = () => {
+        hidePreviewBar();
+    };
+
+    const uploadImage = document.querySelector('.upload-image');
+    const hiddenFileField = document.querySelector('.hidden-file-field');
+    uploadImage.onclick = () => {
+        hiddenFileField.click();
     }
 }, false);
 

@@ -1,16 +1,17 @@
 .admin-content-wrapper {
+    display: inline-flex;
     position: absolute;
     right: 50px;
-    
+    height: 60px;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
     a {
-        padding: 0 10px;
+        height: 20px;
+        padding: 0 15px;
         font-size: 15px;
         color: #212529;
         text-decoration: none;
-        border-right: 1px solid #797979;
-    }
-
-    .logout-button {
-        border: none;
     }
 }
