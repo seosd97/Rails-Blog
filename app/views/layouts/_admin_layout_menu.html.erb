@@ -2,7 +2,8 @@
     <% if current_page?(new_admin_post_path) ||
         (@post.present? && @post.id.present? && current_page?(edit_admin_post_path(@post))) %>
         <!--글 작성 레이아웃 메뉴-->
-        <%= link_to "Publish", "javascript:void(0)", class: 'publish-button' %>
+        <%= content_tag :a, 'Publish', class: 'publish-button' %>
+        <%= content_tag :a, 'Upload Image', class: 'upload-image-button' %>
     <% else %>
         <!--기본 레이아웃 메뉴-->
         <%= link_to "New Post", new_admin_post_path, method: :get %>

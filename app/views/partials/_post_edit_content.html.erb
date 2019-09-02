@@ -5,23 +5,31 @@
 
 <div class="post-edit-content">
     <div class="post-edit-container">
-        <%= form_with model: [:admin, @post] do |f| %>
+        <%= form_with model: [:admin, @post], class: 'post-edit-form' do |f| %>
             <%= f.text_field :title, class: "post-edit-field post-edit-field-title", placeholder: "Enter Title" %>
             <%= f.hidden_field :description, class: "post-edit-desc-hidden" %>
             <div class="post-edit-field post-edit-field-desc" contenteditable=true placeholder="Enter Description in markdown format"></div>
         <% end %>
     </div>
 
+<!--
     <div class="post-edit-nav">
-        <%= image_tag 'icons/picture.png', size: '25x25', align: 'center', onClick: "javascript:hidePreviewBar()", class: 'upload-image' %>
+        <%= image_tag 'icons/picture.png', size: '40x40', align: 'center', onClick: "javascript:hidePreviewBar()", class: 'upload-image' %>
         <%= file_field_tag '', class: 'hidden-file-field', style: "display: none;" %>
     </div>
+-->
 </div>
 
 <div class="image-preview-bar", disabled="true">
     <div class="image-preview-bar-header">
-        <span class="preview-title">이미지</span>
-        <%= image_tag 'icons/close.png', size: '18x18', align: 'center', onClick: "javascript:hidePreviewBar()", class: 'preview-close' %>
+        <span class="preview-title">Images</span>
+
+        <span class="image-preview-menu">
+            <%= image_tag 'icons/picture.png', size: '30x30', class: 'upload-image' %>
+            <%= file_field_tag '', class: 'hidden-file-field', style: "display: none;" %>
+
+            <%= image_tag 'icons/close.png', size: '18x18', onClick: "javascript:hidePreviewBar()", class: 'preview-close' %>
+        </span>
     </div>
 
     <div class="image-preview-bar-container">
