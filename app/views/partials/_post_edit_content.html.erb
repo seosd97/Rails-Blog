@@ -26,6 +26,7 @@
 
         <span class="image-preview-menu">
             <%= image_tag 'icons/picture.png', size: '30x30', class: 'upload-image' %>
+            <!--TODO : 파일 업로드 전용 폼을 생성하고, 비동기로 파일을 업로드 할 수 있도록 작업-->
             <%= file_field_tag '', class: 'hidden-file-field', style: "display: none;" %>
 
             <%= image_tag 'icons/close.png', size: '18x18', onClick: "javascript:hidePreviewBar()", class: 'preview-close' %>
