@@ -1,16 +1,17 @@
 const descEditField = document.querySelector(".post-edit-field-desc");
-const descHiddenField = document.querySelector(".post-edit-desc-hidden");
 const imageField = document.querySelector(".image-field");
 const imageHidden = document.querySelector(".hidden-file-field");
 
-if (descHiddenField.value !== "") {
-    descEditField.innerText = descHiddenField.value;
-}
+descEditField.addEventListener("input", e => {
+    const offset = descEditField.offsetHeight - descEditField.clientHeight;
+    descEditField.style.height = 'auto';
+    descEditField.style.height = (descEditField.scrollHeight + offset) + 'px';
+});
 
 const publishBtn = document.querySelector(".publish-button");
 if (publishBtn !== null) {
     publishBtn.onclick = () => {
-        descHiddenField.value = descEditField.innerText;
+        imageField.files = imageHidden.files;
         const form = document.querySelector(".post-edit-form");
         Rails.fire(form, "submit");
     };
@@ -32,7 +33,7 @@ uploadImage.onclick = () => {
 hiddenFileField.onchange = () => {
     const reader = new FileReader();
     reader.readAsDataURL(hiddenFileField.files[0]);
-    console.log(hiddenFileField.files[0]);
+    //console.log(hiddenFileField.files[0]);
     // reader.onload = () => {
     //     console.log(reader.result);
     // }

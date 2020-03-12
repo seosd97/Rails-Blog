@@ -11,7 +11,7 @@ class Admin::PostsController < AdminController
     end
 
     def create
-        @post = Post.new(permit_params(:post, [:title, :description]))
+        @post = Post.new(permit_params(:post, [:title, :description, :image]))
         @post.owner = 'admin'
 
         if @post.save
@@ -25,7 +25,7 @@ class Admin::PostsController < AdminController
     end
     
     def update
-        if @post.update(permit_params(:post, [:title, :description]))
+        if @post.update(permit_params(:post, [:title, :description, :image]))
             redirect_to admin_post_path(@post)
         else
             show_post_edit_error_message
@@ -33,7 +33,8 @@ class Admin::PostsController < AdminController
     end
 
     def destroy
-        redirect_to admin_posts_path if @post.destroy
+        @post.destroy
+        redirect_to admin_posts_path
     end
 
     private

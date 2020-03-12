@@ -15,6 +15,14 @@
 
         <%= image_tag 'icons/visitor.png', size: '15x15', align: 'center' %>
         <%= @post.visitor_count %>
+        <% if @post.image.attached? %>
+            <%= image_tag @post.image %>
+        <% end %>
+        <%
+=begin%>
+ <%= image_tag @post.image %> 
+<%
+=end%>
     </div>
 
     <div class="post-content">
