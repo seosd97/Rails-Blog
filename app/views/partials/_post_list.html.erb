@@ -2,8 +2,8 @@
     <% @posts.each do |post| %>
         <li class="post-list-element">
             <%= link_to post_path(post) do %>
-                <strong class="post-list-title"><%= post.title %></strong>
-                <p class="post-list-desc">
+                <h2><%= post.title %></h2>
+                <p>
                     <%= parse_md_strip_down(post.description) %>
                 </p>
             <% end %>

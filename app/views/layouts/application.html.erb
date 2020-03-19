@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="author", content="seosd97">
     <meta name="description", content="개발 블로그">
-    <meta name="viewport", content="width=device-width, initial-scale=1">
+    <meta name="viewport", content="width=device-width, initial-scale=1, minimum-scale=1">
     <meta http-equiv="x-ua-compatible", content="IE=Edge">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -20,7 +20,17 @@
 
   <body>
     <header class="layout-header">
+      <div class="header-container">
         <a href="/" class="home-link">SSD's Blog</a>
+        <ul>
+          <li>
+            Sign Up
+          </li>
+          <li>
+            Sign In
+          </li>
+        </ul>
+      </div>
     </header>
 
     <div class="message-block-area"></div>

@@ -16,17 +16,15 @@
         text-decoration: none;
         color: black;
 
-        .post-list-title {
-            font-size: 24px;
+        h2 {
+            font-size: 1.7rem;
         }
 
-        &:hover {
-            .post-list-title {
-                color: #525252;
-            }
+        &:hover h2 {
+            color: #525252;
         }
 
-        .post-list-desc {
+        p {
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -35,7 +33,7 @@
             word-wrap: break-word;
             text-align: left;
             overflow: hidden;
-            font-size: 14px;
+            font-size: 0.9rem;
             color: rgb(77, 77, 77);
         }
     }
@@ -44,7 +42,7 @@
         display: block;
         list-style: none;
         padding: 0;
-        font-size: 12px;
+        font-size: 0.7rem;
         
         li {
             display: inline-block;
