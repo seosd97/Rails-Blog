@@ -22,8 +22,4 @@ module PostsHelper
         markdown = Redcarpet::Markdown::new(Redcarpet::Render::StripDown)
         markdown.render(text)
     end
-
-    def get_post_path(post)
-        return is_admin_page? ? admin_post_path(post) : post_path(post)
-    end
 end

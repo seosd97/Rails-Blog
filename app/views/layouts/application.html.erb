@@ -20,22 +20,8 @@
 
   <body>
     <header class="layout-header">
-      <% if is_admin_page? %>
-        <a href="/admin" class="home-link">SSD's Blog [Admin]</a>
-        
-        <% if has_login? %>
-          <%= render 'layouts/admin_layout_menu' %>
-        <% end %>
-
-      <% else %>
         <a href="/" class="home-link">SSD's Blog</a>
-      <% end %>
     </header>
-
-    <!-- TODO : 우측 상단에 알림 메세지 박스를 띄워 줘야 함. -->
-    <span class="notification-block">
-    </span>
-    <!---->
 
     <div class="message-block-area"></div>
 

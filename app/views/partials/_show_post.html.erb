@@ -3,12 +3,10 @@
         <%= @post.title %>
     </h1>
 
-    <% if is_admin_page? %>
-        <div class="post-edit-menu">
-            <%= link_to image_tag('icons/edit.png', size: '15x15', align: 'center'), edit_admin_post_path, method: :get %>
-            <%= link_to image_tag('icons/delete.png', size: '15x15', align: 'center'), { action: "destroy" }, method: :delete, data: {confirm: "Are you sure?"} %>
-        </div>
-    <% end %>
+    <div class="post-edit-menu">
+        <%= link_to image_tag('icons/edit.png', size: '15x15', align: 'center'), edit_post_path, method: :get %>
+        <%= link_to image_tag('icons/delete.png', size: '15x15', align: 'center'), { action: "destroy" }, method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
 
     <div class="post-info">
         <%= @post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %><br>
