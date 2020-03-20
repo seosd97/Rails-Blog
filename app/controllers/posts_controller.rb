@@ -13,8 +13,7 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.new(permit_params(:post, [:title, :description, :image]))
-        @post.owner = 'admin'
+        @post = Post.new(permit_params(:post, [:title, :description]))
 
         if @post.save
             redirect_to admin_post_path(@post)
@@ -27,7 +26,7 @@ class PostsController < ApplicationController
     end
     
     def update
-        if @post.update(permit_params(:post, [:title, :description, :image]))
+        if @post.update(permit_params(:post, [:title, :description]))
             redirect_to admin_post_path(@post)
         else
             show_post_edit_error_message
