@@ -1,10 +1,10 @@
-<section id='signup-section'>
-    <h1 id='signup-title'>Sign Up</h1>
+<section id='sign-form-section'>
+    <h1 id='sign-form-section'>Sign Up</h1>
 
     <%= form_with url: join_path do |f| %>
         <%= f.text_field :name, class: 'form-element text-field', placeholder: 'Nickname' %>
         <%= f.text_field :email, class: 'form-element text-field', placeholder: 'e-mail', pattern: "^[a-zA-Z\d]+\@[a-zA-Z\d]+\.[a-zA-Z]+" %>
         <%= f.password_field :password, class: 'form-element text-field', placeholder: 'Password' %>
-        <%= f.submit "Submit", class: 'form-element', disable_with: 'Submiting...' %>
+        <%= f.submit "Sign Up", class: 'form-element', disable_with: 'Submiting...' %>
     <% end %>
 </section>

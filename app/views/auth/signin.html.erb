@@ -1,0 +1,9 @@
+<section id='sign-form-section'>
+    <h1>Sign In</h1>
+
+    <%= form_with url: login_path, method: :post do |f| %>
+        <%= f.text_field :identity, class: 'form-element text-field', placeholder: 'UserName or Email' %>
+        <%= f.password_field :password, class: 'form-element text-field', placeholder: 'Password' %>
+        <%= f.submit "Sign In", class: 'form-element', disable_with: 'Submiting...' %>
+    <% end %>
+</section>

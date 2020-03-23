@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#signup-section {
+#sign-form-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,6 +45,14 @@
             &:invalid {
                 border-color: red;
             }
+        }
+
+        input[type="submit"] {
+            background: rgba(109, 191, 77, .8);
+            height: 40px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2rem;
         }
     }
 }
