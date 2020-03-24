@@ -4,13 +4,39 @@ class AuthController < ApplicationController
 
     def regist
         if User.where("name = \"#{params[:name]}\" OR email = \"#{params[:email]}\"").present?
-            redirect_to "/" and return
+            render :signup and return
         end
 
         user = User.new(name: params[:name], email: params[:email], password: params[:password], role: "admin");
         if user.save
             session[:user_id] = user.id;
             redirect_to posts_path
+        end
+    end
+
+    def signup_check_data
+        type = params[:type];
+        data = params[:data];
+
+        render json: {status: "error", msg: "You should have type"}.to_json and return if type == nil
+        render json: {status: "failed", msg: "This field is required"}.to_json and return if data.blank?
+
+        if type == "name"
+            user = User.find_by(name: data);
+            if user.present?
+                render json: {status: "failed", msg: "This name is already use"}.to_json
+            else
+                render json: {status: "success", msg: "You can use this name"}.to_json
+            end
+        elsif type == "email"
+            user = User.find_by(email: data);
+            if user.present?
+                render json: {status: "failed", msg: "This email is already use"}.to_json
+            else
+                render json: {status: "success", msg: "You can use this email"}.to_json
+            end
+        else
+            render json: {status: "error", msg: "type is invalid"}.to_json
         end
     end
 

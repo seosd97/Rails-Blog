@@ -1,10 +1,17 @@
+<%= content_for :head do %>
+    <%= javascript_include_tag 'signup_form_checker', defer: true, 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <section id='sign-form-section'>
-    <h1 id='sign-form-section'>Sign Up</h1>
+    <h1>Sign Up</h1>
 
     <%= form_with url: join_path do |f| %>
-        <%= f.text_field :name, class: 'form-element text-field', placeholder: 'Nickname' %>
-        <%= f.text_field :email, class: 'form-element text-field', placeholder: 'e-mail', pattern: "^[a-zA-Z\d]+\@[a-zA-Z\d]+\.[a-zA-Z]+" %>
-        <%= f.password_field :password, class: 'form-element text-field', placeholder: 'Password' %>
+        <label id="name-field-info", class="field-info-label">label area</label>
+        <%= f.text_field :name, id: 'signup-name-field', class: 'form-element text-field', placeholder: 'Nickname' %>
+        <label id="email-field-info", class="field-info-label">label area</label>
+        <%= f.text_field :email, id: 'signup-email-field', class: 'form-element text-field', placeholder: 'e-mail' %>
+        <label id="password-field-info", class="field-info-label">label area</label>
+        <%= f.password_field :password, id: 'signup-password-field', class: 'form-element text-field', placeholder: 'Password' %>
         <%= f.submit "Sign Up", class: 'form-element', disable_with: 'Submiting...' %>
     <% end %>
 </section>
