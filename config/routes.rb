@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'join/checkData', to: 'auth#signup_check_data'
   get 'logout', to: 'auth#signout'
 
-  resources :users
+  resources :users, except: [:index, :new, :create], param: :name
   resources :posts, shallow: true do
     resources :comments, only: [:create, :update, :destroy]
   end
