@@ -32,6 +32,12 @@
             </li>
           <% else %>
             <li>
+              <%= link_to "New Post", new_post_path %>
+            </li>
+            <li>
+              <label class="publish-button">Publish</label>
+            </li>
+            <li>
               <%= link_to "Sign Out", logout_path %>
             </li>
           <% end %>

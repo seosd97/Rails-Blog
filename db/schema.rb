@@ -63,6 +63,6 @@ ActiveRecord::Schema.define(version: 2020_03_20_130742) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "users"
-  add_foreign_key "posts", "users"
+  add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "posts", "users", on_delete: :cascade
 end

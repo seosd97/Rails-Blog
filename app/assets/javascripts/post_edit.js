@@ -1,6 +1,6 @@
 const descEditField = document.querySelector(".post-edit-field-desc");
-const imageField = document.querySelector(".image-field");
-const imageHidden = document.querySelector(".hidden-file-field");
+// const imageField = document.querySelector(".image-field");
+// const imageHidden = document.querySelector(".hidden-file-field");
 
 descEditField.addEventListener("input", e => {
     const offset = descEditField.offsetHeight - descEditField.clientHeight;
@@ -10,8 +10,7 @@ descEditField.addEventListener("input", e => {
 
 const publishBtn = document.querySelector(".publish-button");
 if (publishBtn !== null) {
-    publishBtn.onclick = () => {
-        imageField.files = imageHidden.files;
+    publishBtn.onclick = () => {        
         const form = document.querySelector(".post-edit-form");
         Rails.fire(form, "submit");
     };

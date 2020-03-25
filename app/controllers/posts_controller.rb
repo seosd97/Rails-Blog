@@ -9,16 +9,16 @@ class PostsController < ApplicationController
     end
 
     def new
-        @post = Post.new
+        @post = User.new
     end
 
     def create
-        @post = Post.new(permit_params(:post, [:title, :description]))
+        @post = User.posts.new(permit_params(:post, [:title, :description]))
 
         if @post.save
             redirect_to admin_post_path(@post)
         else
-            show_post_edit_error_message 
+            render :new
         end
     end
 

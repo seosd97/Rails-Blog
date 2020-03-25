@@ -2,6 +2,12 @@
     <%= javascript_include_tag 'post_edit', defer: true, 'data-turbolinks-track': 'reload'%>
 <% end %>
 
+<div>
+    <% if @post.errors.present? %>
+        <%= @post.errors %>
+    <% end %>
+</div>
+
 <div class="post-edit-content">
     <div class="post-edit-container">
         <%= form_with model: @post, class: 'post-edit-form' do |f| %>
