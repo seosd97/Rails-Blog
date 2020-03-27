@@ -1,3 +1,81 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#user-profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    background-color: gray;
+
+    #profile-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        max-width: 500px;
+        width: 100%;
+        height: 100%;
+        padding-top: 100px;
+        box-sizing: border-box;
+
+        h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        
+        p {
+            min-height: .8rem;
+            font-size: .8rem;
+            word-break: break-all;
+        }
+    }
+}
+
+#user-posts-section {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    #user-post-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 30px;
+        box-sizing: inherit;
+
+        #user-post {
+            width: 100%;
+            height: 180px;
+            border: 1px solid black;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            box-sizing: inherit;
+
+            a {
+                text-decoration: none;
+
+                h3 {
+                    color: black;
+                }
+
+                p {
+                    color: rgb(128, 128, 128);
+                }
+
+                &:hover * {
+                    color: red;
+                }
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
