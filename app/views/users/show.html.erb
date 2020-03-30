@@ -13,7 +13,14 @@
                     <h3><%= post.title %></h3>
                     <p><%=parse_md_strip_down(post.description)%></p>
                 <% end %>
-                <label><%= post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %></label>
+                <ul>
+                    <li class="owner-name">
+                        <%= post.owner %>
+                    </li>
+                    <li>
+                        <%= post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %>
+                    </li>
+                </ul>
             </div>
         <% end %>
     </div>

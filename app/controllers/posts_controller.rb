@@ -13,7 +13,11 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = User.posts.new(permit_params(:post, [:title, :description]))
+        user = User.find(session[:user_id]);
+        redirect_to join_path unless user.present?
+
+        @post = user.posts.new(permit_params(:post, [:title, :description]))
+        @post.owner = user.name
 
         if @post.save
             redirect_to admin_post_path(@post)
