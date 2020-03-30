@@ -1,6 +1,9 @@
 <section id="user-profile-section">
     <div id="profile-info">
-        <h1><%= @user.name %></h1>
+        <h1>
+            <%= @user.name %>
+            <%= link_to image_tag('icons/edit.png', size: '15x15', align: 'center'), "", method: :get, id: "user-setting-icon" %>
+        </h1>
         <p>01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789 <%= @user.bio %></p>
     </div>
 </section>
