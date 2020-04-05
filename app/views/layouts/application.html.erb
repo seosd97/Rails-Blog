@@ -12,7 +12,7 @@
     <meta http-equiv="x-ua-compatible", content="IE=Edge">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Nanum+Gothic%7CConsolas', media: 'all' %>
+    <%= stylesheet_link_tag    'http://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Ubuntu+Mono&display=swap&display=swap', media: 'all' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <%= yield :head %>
@@ -21,7 +21,7 @@
   <body>
     <header class="layout-header">
       <div class="header-container">
-        <a href="/" class="home-link">SSD's Blog</a>
+        <a href="/" class="home-link f-b">SSD's Blog</a>
         <ul>
           <% if session[:user_id].nil? %>
             <li>
@@ -35,10 +35,7 @@
               <%= link_to "New Post", new_post_path %>
             </li>
             <li>
-              <label class="publish-button">Publish</label>
-            </li>
-            <li>
-              <%= link_to "Sign Out", logout_path %>
+              <%= link_to current_user.name, user_path(current_user.name) %>
             </li>
           <% end %>
         </ul>
