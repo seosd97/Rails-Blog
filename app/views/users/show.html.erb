@@ -2,7 +2,7 @@
     <div id="profile-info">
         <h1 class="f-b"><%= @user.name %></h1>
         <% if @user.id == session[:user_id] %>
-            <%= link_to image_tag('icons/setting.png', size: '15x15'), "/", method: :get %>
+            <%= link_to image_tag('icons/setting.png', size: '15x15'), edit_user_path(@user.name), method: :get %>
         <% end %>
         <p>01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789 <%= @user.bio %></p>
     </div>

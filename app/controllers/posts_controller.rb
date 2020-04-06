@@ -27,9 +27,11 @@ class PostsController < ApplicationController
     end
 
     def edit
+        @post = Post.find(params[:id])
     end
     
     def update
+        @post = Post.find(params[:id])
         if @post.update(permit_params(:post, [:title, :description]))
             redirect_to admin_post_path(@post)
         else

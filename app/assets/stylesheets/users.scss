@@ -115,3 +115,81 @@
         }
     }
 }
+
+#user-edit-section {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 20px 0;
+
+        .edit-form-field {
+            width: 400px;
+            margin-bottom: 5px;
+            border: none;
+            outline: none;
+            resize: none;
+            background-color: #fcfcfc;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        input[type="text"] {
+            height: 30px;
+            line-height: 30px;
+        }
+
+        #user_name {
+            font-size: 1.5rem;
+        }
+
+        #user_email {
+            font-size: 1rem;
+        }
+
+        textarea {
+            height: 60px;
+            font-size: 1rem;
+        }
+
+        .edit-form-button {
+            font-size: .9rem;
+            width: 70px;
+            height: 30px;
+            box-sizing: inherit;
+            background-color: #fcfcfc;
+            margin-right: 8px;
+            border-radius: 6px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            border: 1px solid #6bca5f;
+            color: #6bca5f;
+
+            &:hover {
+                border-color: #2ca51d;
+                color: #2ca51d;
+            }
+        }
+
+        .btn-cancel {
+            border: 1px solid #e06565;
+            color: #e06565;
+
+            &:hover {
+                border-color: #c92626;
+                color: #c92626;
+            }
+        }
+    }
+}

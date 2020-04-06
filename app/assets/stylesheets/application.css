@@ -62,7 +62,6 @@ code {
 
 .header-container li > a{
     text-decoration: none;
-    color: black;
 }
 
 .home-link {
@@ -70,4 +69,12 @@ code {
     font-size: 1.5rem;
     color: #212529;
     text-decoration: none;
+}
+
+.btn-link {
+    color: black;
+}
+
+.btn-link:hover {
+    color: rgb(102, 102, 102);
 }

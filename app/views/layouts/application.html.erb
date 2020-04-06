@@ -25,17 +25,17 @@
         <ul>
           <% if session[:user_id].nil? %>
             <li>
-              <%= link_to "Sign Up", join_path %>
+              <%= link_to "Sign Up", join_path, class: "btn-link" %>
             </li>
             <li>
-              <%= link_to "Sign In", login_path %>
+              <%= link_to "Sign In", login_path, class: "btn-link" %>
             </li>
           <% else %>
             <li>
-              <%= link_to "New Post", new_post_path %>
+              <%= link_to "New Post", new_post_path, class: "btn-link" %>
             </li>
             <li>
-              <%= link_to current_user.name, user_path(current_user.name) %>
+              <%= link_to current_user.name, user_path(current_user.name), class: "btn-link" %>
             </li>
           <% end %>
         </ul>
