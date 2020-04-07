@@ -9,7 +9,10 @@ class PostsController < ApplicationController
     end
 
     def new
-        @post = User.new
+        user = User.find(session[:user_id]);
+        redirect_to join_path unless user.present?
+
+        @post = user.posts.new
     end
 
     def create

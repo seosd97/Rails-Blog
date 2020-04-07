@@ -6,12 +6,12 @@
     <h1>Sign Up</h1>
 
     <%= form_with url: join_path do |f| %>
-        <label id="name-field-info", class="field-info-label">label area</label>
-        <%= f.text_field :name, id: 'signup-name-field', class: 'form-element text-field', placeholder: 'Nickname' %>
-        <label id="email-field-info", class="field-info-label">label area</label>
+        <label id="email-field-info", class="field-info-label"></label>
         <%= f.text_field :email, id: 'signup-email-field', class: 'form-element text-field', placeholder: 'e-mail' %>
-        <label id="password-field-info", class="field-info-label">label area</label>
+        <label id="name-field-info", class="field-info-label"></label>
+        <%= f.text_field :name, id: 'signup-name-field', class: 'form-element text-field', placeholder: 'Nickname' %>
+        <label id="password-field-info", class="field-info-label"></label>
         <%= f.password_field :password, id: 'signup-password-field', class: 'form-element text-field', placeholder: 'Password' %>
-        <%= f.submit "Sign Up", class: 'form-element', disable_with: 'Submiting...' %>
+        <%= f.submit "Continue", class: 'form-element', disable_with: '...' %>
     <% end %>
 </section>

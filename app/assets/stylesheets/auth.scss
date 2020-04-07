@@ -9,7 +9,7 @@
     align-items: center;
 
     h1{
-        font-size: 2.3rem;
+        font-size: 2rem;
     }
 
     form {
@@ -24,21 +24,22 @@
         // box-shadow: 0px 0px 6px 2px #b1b1b17a;
 
         .form-element {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             font-size: 1.3rem;
             line-height: 1.5;
             width: 100%;
             box-sizing: inherit;
 
-            &:last-of-type {
+            &:last-child {
                 margin-bottom: 0;
             }
         }
 
         .text-field {
             padding: 5px 10px;
-            border-radius: 8px;
-            border: 1px solid rgba(0,0,0,.15);
+            border: none;
+            border-bottom: 1px solid #333030;
+            background-color: #fcfcfc;
             outline: none;
 
             &::placeholder {
@@ -47,11 +48,10 @@
         }
 
         .invalid-field {
-            border-color: red;
+            border-color: rgb(214, 41, 41);
         }
 
         .field-info-label {
-            color: #e96767;
             width: 100%;
             text-align: left;
             padding-left: 22px;
@@ -61,13 +61,14 @@
         }
 
         input[type="submit"] {
-            background: rgba(109, 191, 77, .8);
+            background-color: #333030;
+            color: #fcfcfc;
             height: 40px;
             text-align: center;
             font-size: 1.2rem;
-            border-radius: 8px;
+            border-radius: 4px;
             border: none;
-            margin-top: 10px;
+            margin-top: 20px;
         }
     }
 }

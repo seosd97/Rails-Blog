@@ -7,6 +7,10 @@ module ApplicationHelper
         current_user.present?
     end
 
+    def post_edit_page?
+        current_page?(new_post_path) || (@post.present? && current_page?(edit_post_path(@post.id))) 
+    end
+
     # CONTOLLER USE ONLY
     def add_block_message(key, *text)
         full_message = text.compact.join(',')

@@ -22,23 +22,15 @@
     <header class="layout-header">
       <div class="header-container">
         <a href="/" class="home-link f-b">SSD's Blog</a>
-        <ul>
-          <% if session[:user_id].nil? %>
-            <li>
-              <%= link_to "Sign Up", join_path, class: "btn-link" %>
-            </li>
-            <li>
-              <%= link_to "Sign In", login_path, class: "btn-link" %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "New Post", new_post_path, class: "btn-link" %>
-            </li>
-            <li>
-              <%= link_to current_user.name, user_path(current_user.name), class: "btn-link" %>
-            </li>
-          <% end %>
-        </ul>
+        <div>
+            <% if session[:user_id].nil? %>
+                <%= link_to "Sign In", login_path %>
+                <%= link_to "Sign Up", join_path %>
+            <% else %>
+                <%= post_edit_page? ? yield(:post_edit_menu) : link_to("New Post", new_post_path) %>
+                <%= link_to current_user.name, user_path(current_user.name) %>
+            <% end %>
+        </div>
       </div>
     </header>
 

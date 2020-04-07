@@ -2,6 +2,11 @@ const descEditField = document.querySelector(".post-edit-field-desc");
 // const imageField = document.querySelector(".image-field");
 // const imageHidden = document.querySelector(".hidden-file-field");
 
+const publishButton = document.getElementById("publish-post");
+publishButton.onclick = e => {
+    e.preventDefault();
+};
+
 descEditField.addEventListener("input", e => {
     const offset = descEditField.offsetHeight - descEditField.clientHeight;
     descEditField.style.height = 'auto';

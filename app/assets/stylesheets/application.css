@@ -13,10 +13,14 @@
  *= require_tree .
  *= require_self
  */
+html, body {
+    height: 100%;
+}
+
 body {
     margin: 0;
     background-color: #fcfcfc;
-    font-family: 'Nanum Gothic', sans-serif;;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 code {
@@ -47,21 +51,23 @@ code {
     width: 100%;
 }
 
-.header-container ul {
+.header-container div {
     float: right;
     margin: 0 20px;
     padding: 0;
     list-style: none;
 }
 
-.header-container li {
+.header-container div > a {
     display: inline;
     margin: 0 5px;
     font-size: 1rem;
+    text-decoration: none;
+    color: black;
 }
 
-.header-container li > a{
-    text-decoration: none;
+.header-container div > a:hover {
+    color: rgb(102, 102, 102);
 }
 
 .home-link {
@@ -69,12 +75,4 @@ code {
     font-size: 1.5rem;
     color: #212529;
     text-decoration: none;
-}
-
-.btn-link {
-    color: black;
-}
-
-.btn-link:hover {
-    color: rgb(102, 102, 102);
 }

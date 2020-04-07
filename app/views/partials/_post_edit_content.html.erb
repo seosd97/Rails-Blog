@@ -1,37 +1,12 @@
-<% content_for :head do %>
-    <%= javascript_include_tag 'post_edit', defer: true, 'data-turbolinks-track': 'reload'%>
+<% content_for :head, javascript_include_tag('post_edit', defer: true, 'data-turbolinks-track': 'reload') %>
+<% content_for :post_edit_menu do %>
+    <%= link_to "Publish", "", id: "publish-post" %>
 <% end %>
 
-<div>
-    <% if @post.errors.present? %>
-        <%= @post.errors %>
+<section class="post-edit-section">
+    <%= form_with model: @post, class: 'post-edit-form' do |f| %>
+        <%= f.text_field :title, class: "f-b post-edit-field post-edit-field-title", placeholder: "Enter Title" %>
+        <%= f.text_area :description, class: "post-edit-field post-edit-field-desc", placeholder: "Enter Description in markdown format" %>
+        <%= f.file_field :image, class: "image-field", style: "display: none;" %>
     <% end %>
-</div>
-
-<div class="post-edit-content">
-    <div class="post-edit-container">
-        <%= form_with model: @post, class: 'post-edit-form' do |f| %>
-            <%= f.text_field :title, class: "post-edit-field post-edit-field-title", placeholder: "Enter Title" %>
-            <%= f.text_area :description, class: "post-edit-field post-edit-field-desc", placeholder: "Enter Description in markdown format" %>
-            <%= f.file_field :image, class: "image-field", style: "display: none;" %>
-        <% end %>
-    </div>
-</div>
-
-<div class="image-preview-bar", disabled="true">
-    <div class="image-preview-bar-header f-b">
-        <span class="preview-title">Images</span>
-
-        <span class="image-preview-menu">
-            <%= image_tag 'icons/picture.png', size: '30x30', class: 'upload-image' %>
-            <!--TODO : 파일 업로드 전용 폼을 생성하고, 비동기로 파일을 업로드 할 수 있도록 작업-->
-            <%= file_field_tag '', class: 'hidden-file-field', style: "display: none;" %>
-
-            <%= image_tag 'icons/close.png', size: '18x18', onClick: "javascript:hidePreviewBar()", class: 'preview-close' %>
-        </span>
-    </div>
-
-    <div class="image-preview-bar-container">
-
-    </div>
-</div>
+</section>
