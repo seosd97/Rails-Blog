@@ -1,65 +1,31 @@
-const descEditField = document.querySelector(".post-edit-field-desc");
-// const imageField = document.querySelector(".image-field");
-// const imageHidden = document.querySelector(".hidden-file-field");
-
+const descEditField = document.getElementById("post_description");
 const publishButton = document.getElementById("publish-post");
+
 publishButton.onclick = e => {
     e.preventDefault();
+
+    const form = document.getElementById("post-form");
+    form.submit();
+    
+    //Rails.fire(form, "submit");
 };
 
+// TODO : 페이지의 끝까지 가지 않고 여유공간을 두고 조정할 수 있도록 수정 필요
 descEditField.addEventListener("input", e => {
     const offset = descEditField.offsetHeight - descEditField.clientHeight;
     descEditField.style.height = 'auto';
     descEditField.style.height = (descEditField.scrollHeight + offset) + 'px';
 });
 
-const publishBtn = document.querySelector(".publish-button");
-if (publishBtn !== null) {
-    publishBtn.onclick = () => {        
-        const form = document.querySelector(".post-edit-form");
-        Rails.fire(form, "submit");
-    };
-}
-
-const uploadImageBtn = document.querySelector(".upload-image-button");
-if (uploadImageBtn !== null) {
-    uploadImageBtn.onclick = () => {
-        showPreviewBar();
-    };
-}
-
-const uploadImage = document.querySelector(".upload-image");
-const hiddenFileField = document.querySelector(".hidden-file-field");
-uploadImage.onclick = () => {
-    hiddenFileField.click();
-};
-
-hiddenFileField.onchange = () => {
-    const reader = new FileReader();
-    reader.readAsDataURL(hiddenFileField.files[0]);
-    //console.log(hiddenFileField.files[0]);
-    // reader.onload = () => {
-    //     console.log(reader.result);
-    // }
-}
-
-// NOTE : 이미지 프리뷰 창 이벤트
-
-// TODO : 추후 연출을 위해 애니메이션으로 처리를 해줘야 함.
-const imagePreviewBar = document.querySelector(".image-preview-bar");
-
-function showPreviewBar() {
-    imagePreviewBar.style.display = "block";
-}
-
-function hidePreviewBar() {
-    imagePreviewBar.style.display = "none";
-}
-
-const previewCloseButton = document.querySelector(".preview-close");
-previewCloseButton.onclick = () => {
-    hidePreviewBar();
-};
+// TODO : 참고를 위해 지우지 않음
+// hiddenFileField.onchange = () => {
+//     const reader = new FileReader();
+//     reader.readAsDataURL(hiddenFileField.files[0]);
+//     console.log(hiddenFileField.files[0]);
+//     reader.onload = () => {
+//         console.log(reader.result);
+//     }
+// }
 
 // NOTE : safari에서 BFCache를 사용하기 때문에 최초 1회 후에는 페이지에서 나갈 때 체크해주지 않음.
 //        그래서 onpageshow에서 persisted(BFCache를 사용하여 로드했는지 체크하는 변수)를 사용하여 체크해줘야함.

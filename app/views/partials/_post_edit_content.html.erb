@@ -4,9 +4,9 @@
 <% end %>
 
 <section class="post-edit-section">
-    <%= form_with model: @post, class: 'post-edit-form' do |f| %>
-        <%= f.text_field :title, class: "f-b post-edit-field post-edit-field-title", placeholder: "Enter Title" %>
-        <%= f.text_area :description, class: "post-edit-field post-edit-field-desc", placeholder: "Enter Description in markdown format" %>
+    <%= form_with model: @post, id: "post-form" do |f| %>
+        <%= f.text_field :title, class: "f-b post-edit-field", placeholder: "Enter Title" %>
+        <%= f.text_area :description, class: "post-edit-field", placeholder: "Enter Description in markdown format" %>
         <%= f.file_field :image, class: "image-field", style: "display: none;" %>
     <% end %>
 </section>

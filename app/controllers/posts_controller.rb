@@ -23,7 +23,7 @@ class PostsController < ApplicationController
         @post.owner = user.name
 
         if @post.save
-            redirect_to admin_post_path(@post)
+            redirect_to post_path(@post)
         else
             render :new
         end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     def update
         @post = Post.find(params[:id])
         if @post.update(permit_params(:post, [:title, :description]))
-            redirect_to admin_post_path(@post)
+            redirect_to post_path(@post)
         else
             show_post_edit_error_message
         end
