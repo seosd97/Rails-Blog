@@ -13,10 +13,10 @@ default: &default
 development:
   <<: *default
   database: RailsBlog_Dev
-  username: <%= ENV["DATABASE_LOCAL_USER"] %>
-  password: <%= ENV["DATABASE_LOCAL_PASSWORD"] %>
-  host: localhost
-  port: <%= ENV["DATABASE_LOCAL_PORT"] %>
+  username: <%= ENV["LOCAL_DB_USER"] %>
+  password: <%= ENV["LOCAL_DB_PASSWORD"] %>
+  host: <%= ENV["LOCAL_DB_HOST"] %>
+  port: <%= ENV["LOCAL_DB_PORT"] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,10 +24,10 @@ development:
 test:
   <<: *default
   database: RailsBlog_Test
-  username: <%= ENV["DATABASE_LOCAL_USER"] %>
-  password: <%= ENV["DATABASE_LOCAL_PASSWORD"] %>
-  host: localhost
-  port: <%= ENV["DATABASE_LOCAL_PORT"] %>
+  username: <%= ENV["LOCAL_DB_USER"] %>
+  password: <%= ENV["LOCAL_DB_PASSWORD"] %>
+  host: <%= ENV["LOCAL_DB_HOST"] %>
+  port: <%= ENV["LOCAL_DB_PORT"] %>
 
 production:
   <<: *default
