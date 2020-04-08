@@ -16,6 +16,7 @@ publishButton.onclick = e => {
     //Rails.fire(form, "submit");
 };
 
+// TODO : 아래 내용 코드 정리 필요
 // TODO : 페이지의 끝까지 가지 않고 여유공간을 두고 조정할 수 있도록 수정 필요
 descriptionField.addEventListener("input", resizeDescriptionField);
 window.onload = resizeDescriptionField;
