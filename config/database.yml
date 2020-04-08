@@ -31,8 +31,8 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV["MYSQL_DATABASE"] %>
-  username: <%= ENV["MYSQL_USER_NAME"] %>
-  password: <%= ENV["MYSQL_USER_PASSWORD"] %>
-  host: <%= ENV["MYSQL_HOST"] %>
-  port: <%= ENV.fetch("MYSQL_PORT") { 3306 } %>
+  database: <%= ENV["RDS_DB_NAME"] %>
+  username: <%= ENV["RDS_USERNAME"] %>
+  password: <%= ENV["RDS_PASSWORD"] %>
+  host: <%= ENV["RDS_HOSTNAME"] %>
+  port: <%= ENV['RDS_PORT'] %>
