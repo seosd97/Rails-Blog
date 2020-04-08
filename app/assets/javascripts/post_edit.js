@@ -1,21 +1,24 @@
-const descEditField = document.getElementById("post_description");
+const descriptionField = document.getElementById("post_description");
 const publishButton = document.getElementById("publish-post");
+
+const resizeDescriptionField = () => {
+    const offset = descriptionField.offsetHeight - descriptionField.clientHeight;
+    descriptionField.style.height = 'auto';
+    descriptionField.style.height = (descriptionField.scrollHeight + offset) + 'px';
+}
 
 publishButton.onclick = e => {
     e.preventDefault();
 
     const form = document.getElementById("post-form");
     form.submit();
-    
+
     //Rails.fire(form, "submit");
 };
 
 // TODO : 페이지의 끝까지 가지 않고 여유공간을 두고 조정할 수 있도록 수정 필요
-descEditField.addEventListener("input", e => {
-    const offset = descEditField.offsetHeight - descEditField.clientHeight;
-    descEditField.style.height = 'auto';
-    descEditField.style.height = (descEditField.scrollHeight + offset) + 'px';
-});
+descriptionField.addEventListener("input", resizeDescriptionField);
+window.onload = resizeDescriptionField;
 
 // TODO : 참고를 위해 지우지 않음
 // hiddenFileField.onchange = () => {
