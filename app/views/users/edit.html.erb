@@ -1,8 +1,8 @@
 <section id="user-edit-section">
     <%= form_with model: @user, url: user_path(@user.name) do |f| %>
-        <%= f.text_field :name, value: @user.name, class: "edit-form-field f-b" %>
-        <%= f.text_field :email, value: @user.email, class: "edit-form-field" %>
-        <%= f.text_area :bio, value: @user.bio, placeholder: "Write your short bio", class: "edit-form-field" %>
+        <%= f.text_field :name, class: "edit-form-field f-b" %>
+        <%= f.text_field :email, class: "edit-form-field" %>
+        <%= f.text_area :bio, placeholder: "Write your short bio", class: "edit-form-field" %>
         <div class="edit-form-field">
             <%= f.submit "Save", disable_with: 'Submiting...', class: "edit-form-button btn-submit" %>
             <input type="button", value="Cancle", onclick="history.back();", id="user-edit-cancel", class="edit-form-button btn-cancel">
