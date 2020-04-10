@@ -3,10 +3,15 @@
     <%= link_to "Publish", "", id: "publish-post" %>
 <% end %>
 
-<section class="post-edit-section">
-    <%= form_with model: @post, id: "post-form" do |f| %>
-        <%= f.text_field :title, class: "f-b post-edit-field", placeholder: "Enter Title" %>
-        <%= f.text_area :description, class: "post-edit-field", placeholder: "Enter Description in markdown format" %>
-        <%= f.file_field :image, class: "image-field", style: "display: none;" %>
-    <% end %>
+<section id="post-edit-section">
+    <article id="post-edit-area">
+        <%= form_with model: @post, id: "post-form" do |f| %>
+            <%= f.text_field :title, class: "f-b post-edit-field", placeholder: "Enter Title" %>
+            <%= f.text_area :description, class: "post-edit-field", placeholder: "Enter Description in markdown format" %>
+            <%= f.file_field :image, class: "image-field", style: "display: none;" %>
+        <% end %>
+    </article>
+
+    <article id="post-preview-area">
+    </article>
 </section>
