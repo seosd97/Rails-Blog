@@ -21,6 +21,9 @@ html, body {
 body {
     margin: 0;
     background-color: #fcfcfc;
+}
+
+* {
     font-family: 'Nanum Gothic', sans-serif;
 }
 

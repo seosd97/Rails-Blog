@@ -1,5 +1,12 @@
+const titleField = document.getElementById("post_title");
+const titlePreview = document.getElementById("title-preview");
 const descriptionField = document.getElementById("post_description");
+const previewArea = document.getElementById("description-preview");
 const publishButton = document.getElementById("publish-post");
+
+const converter = new showdown.Converter({ headerLevelStart: 3 });
+
+let curHtml = "";
 
 const resizeDescriptionField = () => {
     const offset = descriptionField.offsetHeight - descriptionField.clientHeight;
@@ -16,10 +23,22 @@ publishButton.onclick = e => {
     //Rails.fire(form, "submit");
 };
 
-// TODO : 아래 내용 코드 정리 필요
+titleField.oninput = e => {
+    titlePreview.innerText = titleField.value;
+};
+
 // TODO : 페이지의 끝까지 가지 않고 여유공간을 두고 조정할 수 있도록 수정 필요
-descriptionField.addEventListener("input", resizeDescriptionField);
 window.onload = resizeDescriptionField;
+descriptionField.addEventListener('input', e => {
+    resizeDescriptionField();
+
+    const newHtml = converter.makeHtml(e.target.value);
+    if (curHtml == newHtml)
+        return;
+
+    curHtml = newHtml;
+    previewArea.innerHTML = curHtml;
+});
 
 // TODO : 참고를 위해 지우지 않음
 // hiddenFileField.onchange = () => {

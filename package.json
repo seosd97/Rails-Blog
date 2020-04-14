@@ -1,5 +1,7 @@
 {
   "name": "rails-blog",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "showdown": "^1.9.1"
+  }
 }
