@@ -1,44 +1,76 @@
+const publishDialog = document.getElementById("publish-dialog");
 const titleField = document.getElementById("post_title");
 const titlePreview = document.getElementById("title-preview");
 const descriptionField = document.getElementById("post_description");
 const previewArea = document.getElementById("description-preview");
-const publishButton = document.getElementById("publish-post");
+const publishButton = document.getElementById("btn-publish");
+const closePublishDialog = document.getElementById("close-publish-dialog");
+const publishPost = document.getElementById("publish-post");
 
 const converter = new showdown.Converter({ headerLevelStart: 3 });
 
 let curHtml = "";
 
+// TODO : 페이지의 끝까지 가지 않고 여유공간을 두고 조정할 수 있도록 수정 필요
 const resizeDescriptionField = () => {
     const offset = descriptionField.offsetHeight - descriptionField.clientHeight;
     descriptionField.style.height = 'auto';
-    descriptionField.style.height = (descriptionField.scrollHeight + offset) + 'px';
+
+    //const finalHeight = Math.max(descriptionField.scrollHeight + offset, previewArea.height);
+    const finalHeight = descriptionField.scrollHeight + offset;
+    descriptionField.style.height = finalHeight + 'px';
+    previewArea.style.height = finalHeight + 'px';
 }
 
-publishButton.onclick = e => {
-    e.preventDefault();
-
-    const form = document.getElementById("post-form");
-    form.submit();
-
-    //Rails.fire(form, "submit");
+const initPublishDialog = () => {
+    const publishTitle = document.getElementById("publish-title");
+    publishTitle.innerText = titleField.value;
 };
 
 titleField.oninput = e => {
     titlePreview.innerText = titleField.value;
 };
 
-// TODO : 페이지의 끝까지 가지 않고 여유공간을 두고 조정할 수 있도록 수정 필요
-window.onload = resizeDescriptionField;
 descriptionField.addEventListener('input', e => {
-    resizeDescriptionField();
-
     const newHtml = converter.makeHtml(e.target.value);
-    if (curHtml == newHtml)
-        return;
+    if (curHtml !== newHtml) {
+        curHtml = newHtml;
+        previewArea.innerHTML = curHtml;
+    }
 
-    curHtml = newHtml;
-    previewArea.innerHTML = curHtml;
+    resizeDescriptionField();
 });
+
+publishButton.onclick = e => {
+    e.preventDefault();
+
+    var html = document.documentElement;
+    html.classList.add("overflow-hidden");
+
+    publishDialog.style.display = "flex";
+    initPublishDialog();
+};
+
+publishPost.onclick = e => {
+    const form = document.getElementById("post-form");
+    form.submit();
+
+    //Rails.fire(form, "submit");
+};
+
+closePublishDialog.onclick = e => {
+    publishDialog.style.display = "none";
+};
+
+(() => {
+    if (descriptionField.value !== "") {
+        curHtml = converter.makeHtml(descriptionField.value);
+        previewArea.innerHTML = curHtml;
+    }
+
+    titlePreview.innerText = titleField.value;
+    resizeDescriptionField();
+})();
 
 // TODO : 참고를 위해 지우지 않음
 // hiddenFileField.onchange = () => {

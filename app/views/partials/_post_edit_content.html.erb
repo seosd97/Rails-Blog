@@ -1,6 +1,6 @@
 <% content_for :head, javascript_include_tag('post_edit', defer: true, 'data-turbolinks-track': 'reload') %>
 <% content_for :post_edit_menu do %>
-    <%= link_to "Publish", "", id: "publish-post" %>
+    <%= link_to "Publish", "", id: "btn-publish" %>
 <% end %>
 
 <section id="post-edit-section">
@@ -20,3 +20,5 @@
         <div id="description-preview"></div>
     </article>
 </section>
+
+<%= render "partials/publish_post_dialog" %>
