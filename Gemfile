@@ -65,3 +65,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'redcarpet'
 gem 'mysql2', '~> 0.5.2'
 gem 'figaro'
+gem 'showdown-rails'
