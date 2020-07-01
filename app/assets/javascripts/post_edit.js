@@ -7,9 +7,13 @@ const publishButton = document.getElementById("btn-publish");
 const closePublishDialog = document.getElementById("close-publish-dialog");
 const publishPost = document.getElementById("publish-post");
 
+const tagInput = document.querySelector('.tag-input');
+
 const converter = new showdown.Converter({ headerLevelStart: 3 });
 
 let curHtml = "";
+let tagList = [];
+const maxTagLength = 20;
 
 // TODO : 페이지의 끝까지 가지 않고 여유공간을 두고 조정할 수 있도록 수정 필요
 const resizeDescriptionField = () => {
@@ -25,6 +29,8 @@ const resizeDescriptionField = () => {
 const initPublishDialog = () => {
     const publishTitle = document.getElementById("publish-title");
     publishTitle.innerText = titleField.value;
+
+    document.documentElement.classList.add("overflow-hidden");
 };
 
 titleField.oninput = e => {
@@ -44,15 +50,15 @@ descriptionField.addEventListener('input', e => {
 publishButton.onclick = e => {
     e.preventDefault();
 
-    var html = document.documentElement;
-    html.classList.add("overflow-hidden");
-
     publishDialog.style.display = "flex";
     initPublishDialog();
 };
 
 publishPost.onclick = e => {
     const form = document.getElementById("post-form");
+    const tagField = document.getElementById("post_tags");
+    tagField.value = tagList;
+
     form.submit();
 
     //Rails.fire(form, "submit");
@@ -60,7 +66,53 @@ publishPost.onclick = e => {
 
 closePublishDialog.onclick = e => {
     publishDialog.style.display = "none";
+
+    document.documentElement.classList.remove("overflow-hidden");
 };
+
+// TODO : 글자 수 제한, 태그 중복, 태그 수 제한 등의 예외에 툴팁을 띄워줘야함.
+tagInput.onkeypress = e => {
+    if (e.keyCode === 13) {
+        e.preventDefault();
+
+        const tag = tagInput.innerText;
+        if (!isValidTag(tag)) {
+            return;
+        }
+
+        // const tagElem = "<%= j render 'partials/tag_element', locals: { tag_name: '${tag}' } %>"
+        e.target.insertAdjacentElement('beforebegin', createTagElement(tag));
+        tagInput.innerText = "";
+        return;
+    }
+
+    if (tagInput.innerText.length >= maxTagLength) {
+        e.preventDefault();
+    }
+}
+
+const createTagElement = tag => {
+    const tagElem = document.createElement("div");
+    tagElem.innerText = `#${tag}`;
+    tagElem.classList = ["tag-element"];
+    tagList.push(tag);
+    
+    return tagElem;
+}
+
+const isValidTag = tag => {
+    if (tagList.length >= 5) {
+        return false;
+    }
+
+    if (tagList.includes(tag)) {
+        return false;
+    }
+
+    // TODO : 공백 등의 예외처리 필요
+
+    return true;
+}
 
 (() => {
     if (descriptionField.value !== "") {

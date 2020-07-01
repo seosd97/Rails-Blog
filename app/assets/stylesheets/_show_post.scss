@@ -9,8 +9,34 @@
 
     .post-info {
         font-size: 12px;
-        margin: 20px 0;
+        margin: 10px 0;
         line-height: 20px;
+
+        .post-tag-container {
+            padding: 5px 0;
+            margin-top: 8px;
+            
+            .post-tag {
+                display: inline-block;
+                font-size: .8rem;
+                font-weight: bold;
+                line-height: .8rem;
+                margin: 0 5px;
+                padding: 4px 5px;
+                color: black;
+                background-color: #ccd3dd;
+                border-radius: 4px;
+                text-decoration: none;
+
+                &:before {
+                    content: "#";
+                }
+
+                &:hover {
+                    color: #424242;
+                }
+            }
+        }
     }
 
     .post-content {

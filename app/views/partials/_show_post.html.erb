@@ -13,6 +13,11 @@
 
         <%= image_tag 'icons/visitor.png', size: '15x15', align: 'center' %>
         <%= @post.visitor_count %>
+        <div class="post-tag-container">
+            <% @post.tags.each do |tag| %>
+                <a href="#" class="post-tag"><%= tag.name %></a>
+            <% end %>
+        </div>
     </div>
 
     <div class="post-content">

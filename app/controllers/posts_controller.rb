@@ -22,10 +22,12 @@ class PostsController < ApplicationController
         @post = user.posts.new(permit_params(:post, [:title, :description]))
         @post.owner = user.name
 
+        updateTags(permit_params(:post, [:tags]))
+
         if @post.save
             redirect_to post_path(@post)
         else
-            render :new
+            # render :new
         end
     end
 
@@ -35,6 +37,9 @@ class PostsController < ApplicationController
     
     def update
         @post = Post.find(params[:id])
+
+        updateTags(permit_params(:post, [:tags]))
+
         if @post.update(permit_params(:post, [:title, :description]))
             redirect_to post_path(@post)
         else
@@ -58,5 +63,24 @@ class PostsController < ApplicationController
         respond_to do |f|
             f.js { render action: "js_templates/message_block" }
         end
+    end
+
+    def updateTags(tagParam)
+        @post.tags.clear
+        
+        return unless tagParam["tags"].present?
+
+        newTags = Array.new
+        tags = tagParam["tags"].split(',');
+        tags.each do |tag|
+            tagRecord = Tag.find_by(name: tag)
+            if tagRecord.present?
+                @post.tags << tagRecord
+            else
+                newTags << {name: tag}
+            end
+        end
+
+        @post.tags.new(newTags)
     end
 end

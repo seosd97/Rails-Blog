@@ -8,6 +8,7 @@ module ApplicationHelper
     end
 
     def post_edit_page?
+        logger.debug "#{current_page?(new_post_path)}"
         current_page?(new_post_path) || (@post.present? && current_page?(edit_post_path(@post.id))) 
     end
 
