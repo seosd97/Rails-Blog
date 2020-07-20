@@ -12,10 +12,6 @@
                 <li>
                     <%= post.created_at.in_time_zone("Asia/Seoul").strftime("%F") %>
                 </li>
-                <li>
-                    <%= image_tag 'icons/visitor.png', size: '13x13', align: 'center' %>
-                    <%= post.visitor_count %>
-                </li>
             </ul>
         </li>
     <% end %>
