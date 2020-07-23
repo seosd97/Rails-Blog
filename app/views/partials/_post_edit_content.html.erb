@@ -1,4 +1,5 @@
 <% content_for :head, javascript_include_tag('post_edit', defer: true, 'data-turbolinks-track': 'reload') %>
+
 <% content_for :post_edit_menu do %>
     <%= link_to "Publish", "", id: "btn-publish" %>
 <% end %>
@@ -8,18 +9,21 @@
         <%= form_with model: @post, id: "post-form" do |f| %>
             <%= f.text_field :title, class: "f-b post-edit-field", placeholder: "Enter Title" %>
             <%= f.text_area :description, class: "post-edit-field", placeholder: "Enter Description in markdown format" %>
-            <%= f.file_field :image, class: "image-field", style: "display: none;" %>
             <%= f.hidden_field :tags %>
         <% end %>
     </article>
-
-    <!--<article id="area-border-menu">
-    </article>-->
 
     <article id="post-preview-area">
         <h3 id="title-preview"></h3>
         <div id="description-preview"></div>
     </article>
+
+    <div id="edit-menu-button">
+        <div class="edit-menu">
+        </div>
+        <%# <input id="file-input" type="file" multiple hidden> %>
+        <%# file_field_tag 'file-input', accept: 'image/png,image/gif,image/jpeg', multiple: true, hidden: true, direct_upload: true %>
+    </div>
 </section>
 
 <%= render "partials/publish_post_dialog" %>

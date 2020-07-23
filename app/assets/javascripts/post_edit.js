@@ -7,6 +7,9 @@ const publishButton = document.getElementById("btn-publish");
 const closePublishDialog = document.getElementById("close-publish-dialog");
 const publishPost = document.getElementById("publish-post");
 
+const uploadButton = document.getElementById("edit-menu-button");
+const fileInput = document.getElementById('file-input');
+
 const tagInput = document.querySelector('.tag-input');
 
 const converter = new showdown.Converter({ headerLevelStart: 3 });
@@ -112,6 +115,28 @@ const isValidTag = tag => {
     // TODO : 공백 등의 예외처리 필요
 
     return true;
+}
+
+uploadButton.onclick = () => {
+    fileInput.click();
+}
+
+fileInput.onchange = () => {
+    if (fileInput.value === "") {
+        return;
+    }
+    
+    // const endpoint = "https://elasticbeanstalk-ap-northeast-2-831785414094.s3.ap-northeast-2.amazonaws.com/Blog_Resources/Dev";
+    const endpoint = fileInput.dataset.directUploadUrl;
+    const upload = new ActiveStorage.DirectUpload(fileInput.files[0], endpoint);
+
+    upload.create((err, blob) => {
+        if (err) {
+            console.log(`res error: ${err}`);
+            return;
+        }
+        
+    })
 }
 
 (() => {

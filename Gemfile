@@ -66,3 +66,4 @@ gem 'redcarpet'
 gem 'mysql2', '~> 0.5.2'
 gem 'figaro'
 gem 'showdown-rails'
+gem "aws-sdk-s3", require: false
